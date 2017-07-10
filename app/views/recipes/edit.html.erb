@@ -1,0 +1,22 @@
+<h1><%= @recipe.name %></h1>
+<img src="<%= @recipe.image_url%>" alt="Recipe Image">
+<p> Cooking Difficulty: <%= @recipe.difficulty%></p>
+<p> Cooking Instructions: <%= @recipe.instruction%></p>
+<%= @recipe.updated_at ? "Updated at: #{@recipe.updated_at}" :  "Created at: #{@recipe.created_at}"%><br>
+
+<h1>Update Recipe</h1>
+<%= form_for @recipe do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :instruction %>
+  <%= f.text_area :instruction %>
+
+  <%= f.label :difficulty %>
+  <%= f.select :difficulty, [1..5] %>
+
+  <%= f.label :image_url %>
+  <%= f.text_field :image_url %>
+
+  <%= f.submit %>
+<% end %>

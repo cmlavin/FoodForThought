@@ -1,0 +1,16 @@
+<h1>Post a New Recipe</h1>
+<%= form_for @recipe do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :instruction %>
+  <%= f.text_area :instruction %>
+
+  <%= f.label :difficulty %>
+  <%= f.select :difficulty, [1, 2, 3, 4, 5] %>
+
+  <%= f.label :image_url %>
+  <%= f.text_field :image_url %>
+
+  <%= f.submit %>
+<% end %>

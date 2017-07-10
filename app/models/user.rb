@@ -3,6 +3,8 @@ class User < ApplicationRecord
   has_many :stories, :foreign_key => "author_id"
   has_many :recipe_stories, through: :stories
 
+  has_secure_password
+  
   def to_s
     self.first_name + " " + self.last_name
   end
