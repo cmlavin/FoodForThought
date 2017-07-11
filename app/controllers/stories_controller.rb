@@ -10,11 +10,13 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.create(story_params)
+    byebug
     redirect_to @story
   end
 
   def show
     @story = Story.find(params[:id])
+    @comment = Comment.new
     redirect_to @story
   end
 
@@ -39,5 +41,5 @@ class StoriesController < ApplicationController
   def story_params
     params.require(:story).permit(:title, :content, :author_id, :publish_date)
   end
-  
+
 end

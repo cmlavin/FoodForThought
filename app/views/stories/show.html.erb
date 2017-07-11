@@ -2,3 +2,11 @@
 <h3><%= @story.author %></h3>
 <p><%= @story.content %></p>
 <!-- Insert comments and recipes here -->
+<h3>Add Comment:</h3>
+<%= form_for @comment do |f| %>
+  <%= f.text_field :reader_id, value: @comment.reader, type: :hidden%>
+  <%= f.text_area :content %>
+  <%= f.text_area :publish_date, {type: "hidden", value: Date.today} %>
+  <%= f.text_area :story_id, {type: "hidden", value: @story.id} %>
+  <%= f.submit %>
+  <% end %>
