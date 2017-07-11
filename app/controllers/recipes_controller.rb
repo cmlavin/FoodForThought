@@ -6,10 +6,24 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @ingredients = current_ingredients.map do |ingredient|
+      Ingredient.find(ingredient)
+    end
+  end
+
+  def add_ingredient
+    byebug
+    @ingredient = Ingredient.find_or_create_by(name: params[:name])
+    current_ingredients << @ingredient.id
+    redirect_to new_recipe_path
   end
 
   def create
     @recipe = Recipe.create(recipe_params)
+    current_ingredients.each do |ingredient|
+      @recipe.ingredients << Ingredient.find(ingredient)
+    end
+    reset_session
     redirect_to @recipe
   end
 

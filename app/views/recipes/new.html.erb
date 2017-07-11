@@ -1,15 +1,28 @@
 <h1>Post a New Recipe</h1>
+<%= form_tag "/recipes/add_ingredients", method: :post do %>
+<h2>List of Ingredients:</h2>
+<ul>
+  <% @ingredients.each do |ingredient| %>
+  <li><%= ingredient.name %></li>
+  <% end %>
+</ul>
+<label>Ingredient Name:</label>
+<%= text_field_tag :name %><br>
+<%= submit_tag "Add Ingredient" %>
+
+<% end %>
+
 <%= form_for @recipe do |f| %>
-  <%= f.label :name %>
+  <label>Recipe Name:</label>
   <%= f.text_field :name %>
 
-  <%= f.label :instruction %>
+  <label>Instructions:</label>
   <%= f.text_area :instruction %>
 
-  <%= f.label :difficulty %>
-  <%= f.select :difficulty, [1, 2, 3, 4, 5] %>
+  <label>Difficulty:</label>
+  <%= f.select :difficulty, (1..5) %>
 
-  <%= f.label :image_url %>
+  <label>Image URL:</label>
   <%= f.text_field :image_url %>
 
   <%= f.submit %>
