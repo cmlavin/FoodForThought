@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   delete '/sessions', to: 'sessions#destroy', as: 'logout'
   post '/ingredients/add_ingredient', to: 'ingredients#add_ingredient', as: 'add_ingredient'
   get '/signup', to: 'users#new', as: 'signup'
-  patch '/recipes/add_recipe', to:'recipes#add_recipe' as: 'add_recipe'
+  patch '/recipes/add_recipe', to: 'recipes#add_recipe', as: 'add_recipe'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

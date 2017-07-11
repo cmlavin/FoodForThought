@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :logged_in?, :current_ingredients
+  helper_method :current_user, :logged_in?, :current_ingredients, :current_recipes
 
   def current_user
     if session[:user_id]
@@ -27,6 +27,5 @@ class ApplicationController < ActionController::Base
   def current_recipes
     session[:recipes_list] ||= []
   end
-
 
 end

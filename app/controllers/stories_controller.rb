@@ -7,12 +7,19 @@ class StoriesController < ApplicationController
   def new
     @story = Story.new
     @user = current_user
+    @recipes = current_recipes.map do |recipe|
+      Recipe.find(recipe)
+    end
   end
 
   def create
     @story = Story.new(story_params)
     @story.author_id = current_user.id
+    current_recipes.each do |recipe|
+      @story.recipes << Story.find(recipe)
+    end
     @story.save
+    reset_session
     byebug
     redirect_to @story
   end

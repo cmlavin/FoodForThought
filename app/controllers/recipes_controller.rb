@@ -12,10 +12,13 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.create(recipe_params)
+    @recipe = Recipe.new(recipe_params)
+    @recipe.author_id = current_user.id
     current_ingredients.each do |ingredient|
       @recipe.ingredients << Ingredient.find(ingredient)
     end
+    @recipe.save
+    byebug
     reset_session
     redirect_to @recipe
   end
@@ -42,9 +45,10 @@ class RecipesController < ApplicationController
     redirect_to recipes_path
   end
 
-  def add_ingredient
-    @ingredient = Ingredient.find(name: params[:name])
-    current_ingredients << @ingredient.id
+  def add_recipe
+    byebug
+    @recipe = Recipe.find(params[:id])
+    current_recipes << @recipe.id
     redirect_to new_recipe_path
   end
 

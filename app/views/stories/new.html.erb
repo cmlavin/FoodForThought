@@ -1,14 +1,20 @@
 <h1>Create a new story</h1>
 <h2>Add Recipe(s):</h2>
-  <%= recipes = @user.recipes %>
+  <ul>
+    <% @recipes.each do |recipe| %>
+    <li><%= recipe.name %></li>
+    <% end %>
+  </ul>
   <%= form_tag add_recipe_path, method: :patch do %>
-  
+  <%= select_tag 'recipe', options_from_collection_for_select(@user.recipes, 'id', 'name') %>
+  <%= submit_tag "Add Recipe"%>
+  <% end %>
 
 <%= form_for @story do |f| %>
-<%= f.label :title %>
-<%= f.text_field :title %>
-<%= f.label :content %>
-<%= f.text_area :content %>
-<%= f.text_field :publish_date, {type: "hidden", value: Date.today}%>
-<%= f.submit "Create new story" %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.text_field :publish_date, {type: "hidden", value: Date.today}%>
+  <%= f.submit "Create new story" %>
 <% end %>
