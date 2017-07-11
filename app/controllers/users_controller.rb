@@ -10,6 +10,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @user = User.find(current_user.id)
+    @recipes = Recipe.all.map do |recipe|
+      recipe.author_id == @user.id
+    end
   end
 
   def create
