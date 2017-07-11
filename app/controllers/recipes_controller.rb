@@ -11,18 +11,14 @@ class RecipesController < ApplicationController
     end
   end
 
-  def add_ingredient
-    byebug
-    @ingredient = Ingredient.find_or_create_by(name: params[:name])
-    current_ingredients << @ingredient.id
-    redirect_to new_recipe_path
-  end
-
   def create
-    @recipe = Recipe.create(recipe_params)
+    @recipe = Recipe.new(recipe_params)
+    @recipe.author_id = current_user.id
     current_ingredients.each do |ingredient|
       @recipe.ingredients << Ingredient.find(ingredient)
     end
+    @recipe.save
+    byebug
     reset_session
     redirect_to @recipe
   end
@@ -47,6 +43,13 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
     redirect_to recipes_path
+  end
+
+  def add_recipe
+    byebug
+    @recipe = Recipe.find(params[:id])
+    current_recipes << @recipe.id
+    redirect_to new_recipe_path
   end
 
 private

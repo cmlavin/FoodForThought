@@ -1,5 +1,6 @@
 <h1>Post a New Recipe</h1>
-<%= form_tag "/recipes/add_ingredients", method: :post do %>
+<%= form_tag add_ingredient_path, method: :post do %>
+
 <h2>List of Ingredients:</h2>
 <ul>
   <% @ingredients.each do |ingredient| %>
@@ -9,7 +10,6 @@
 <label>Ingredient Name:</label>
 <%= text_field_tag :name %><br>
 <%= submit_tag "Add Ingredient" %>
-
 <% end %>
 
 <%= form_for @recipe do |f| %>

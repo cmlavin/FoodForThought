@@ -1,12 +1,33 @@
 <h1><%= @story.title %></h1>
-<h3><%= @story.author %></h3>
+<h3>by <%= @story.author %></h3>
 <p><%= @story.content %></p>
 <!-- Insert comments and recipes here -->
+<% @story.recipes.each do |recipe| %>
+<h3><%= recipe.name %></h3>
+<img src="<%= recipe.image_url%>" alt="Recipe Image">
+<p> Cooking Difficulty: <%= recipe.difficulty%></p>
+<h2>Ingredients:</h2>
+<ul>
+  <% recipe.ingredients.each do |ingredient| %>
+  <li><%= ingredient.name %></li>
+  <% end %>
+</ul>
+<p> Cooking Instructions: <%= recipe.instruction%></p>
+<%= recipe.updated_at ? "Updated at: #{recipe.updated_at}" :  "Created at: #{recipe.created_at}"%><br>
+<% end %>
+
 <h3>Add Comment:</h3>
-<%= form_for @comment do |f| %>
+<%= form_for @comment  do |f| %>
   <%= f.text_field :reader_id, value: @comment.reader, type: :hidden%>
   <%= f.text_area :content %>
-  <%= f.text_area :publish_date, {type: "hidden", value: Date.today} %>
-  <%= f.text_area :story_id, {type: "hidden", value: @story.id} %>
+  <%= f.text_field :publish_date, {type: "hidden", value: Date.today} %>
+  <%= f.text_field :story_id, {type: "hidden", value: @story.id} %>
   <%= f.submit %>
+  <% end %>
+
+<h3>Comments:</h3>
+<% @story.comments.each do |comment| %>
+  <p>posted by: <%= comment.reader.user_name %></p>
+  <p><%= comment.content %></p>
+  <p>published: <%= comment.publish_date %></p>
   <% end %>
