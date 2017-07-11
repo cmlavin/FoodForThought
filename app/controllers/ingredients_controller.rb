@@ -34,6 +34,12 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.find(params[:id])
   end
 
+  def add_ingredient
+    @ingredient = Ingredient.find_or_create_by(name: params[:name])
+    current_ingredients << @ingredient.id
+    redirect_to new_recipe_path
+  end
+
 private
   def ingredient_params
     params.require(:ingredient).permit(:name, :cost, :allergen)

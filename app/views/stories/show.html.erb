@@ -3,10 +3,17 @@
 <p><%= @story.content %></p>
 <!-- Insert comments and recipes here -->
 <h3>Add Comment:</h3>
-<%= form_for @comment do |f| %>
+<%= form_for @comment  do |f| %>
   <%= f.text_field :reader_id, value: @comment.reader, type: :hidden%>
   <%= f.text_area :content %>
-  <%= f.text_area :publish_date, {type: "hidden", value: Date.today} %>
-  <%= f.text_area :story_id, {type: "hidden", value: @story.id} %>
+  <%= f.text_field :publish_date, {type: "hidden", value: Date.today} %>
+  <%= f.text_field :story_id, {type: "hidden", value: @story.id} %>
   <%= f.submit %>
+  <% end %>
+
+<h3>Comments:</h3>
+<% @story.comments.each do |comment| %>
+  <p>posted by: <%= comment.reader.user_name %></p>
+  <p><%= comment.content %></p>
+  <p>published: <%= comment.publish_date %></p>
   <% end %>

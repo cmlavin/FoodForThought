@@ -1,4 +1,9 @@
 <h1>Create a new story</h1>
+<h2>Add Recipe(s):</h2>
+  <%= recipes = @user.recipes %>
+  <%= form_tag add_recipe_path, method: :patch do %>
+  
+
 <%= form_for @story do |f| %>
 <%= f.label :title %>
 <%= f.text_field :title %>

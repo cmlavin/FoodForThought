@@ -24,4 +24,9 @@ class ApplicationController < ActionController::Base
     session[:ingredients_list] ||= []
   end
 
+  def current_recipes
+    session[:recipes_list] ||= []
+  end
+
+
 end

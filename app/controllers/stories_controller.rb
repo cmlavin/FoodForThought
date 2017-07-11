@@ -6,10 +6,13 @@ class StoriesController < ApplicationController
 
   def new
     @story = Story.new
+    @user = current_user
   end
 
   def create
-    @story = Story.create(story_params)
+    @story = Story.new(story_params)
+    @story.author_id = current_user.id
+    @story.save
     byebug
     redirect_to @story
   end
@@ -17,7 +20,6 @@ class StoriesController < ApplicationController
   def show
     @story = Story.find(params[:id])
     @comment = Comment.new
-    redirect_to @story
   end
 
   def edit
