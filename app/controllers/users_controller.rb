@@ -10,9 +10,12 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @user = User.find(current_user.id)
-    @recipes = Recipe.all.map do |recipe|
+    @user = current_user
+    @recipes = Recipe.all.select do |recipe|
       recipe.author_id == @user.id
+    end
+    @stories = Story.all.select do |story|
+      story.author_id == @user.id
     end
   end
 
