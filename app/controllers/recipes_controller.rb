@@ -12,9 +12,11 @@ class RecipesController < ApplicationController
   end
 
   def add_ingredient
-    byebug
-    @ingredient = Ingredient.find_or_create_by(name: params[:name])
-    current_ingredients << @ingredient.id
+    if !params[:name].empty?
+      @ingredient = Ingredient.find_or_create_by(name: params[:name])
+      current_ingredients << @ingredient.id
+    end
+    current_ingredients = handle_dem_unchecked_boxes(params[:ingredient_ids]) if params[:ingredient_ids]
     redirect_to new_recipe_path
   end
 
@@ -23,7 +25,7 @@ class RecipesController < ApplicationController
     current_ingredients.each do |ingredient|
       @recipe.ingredients << Ingredient.find(ingredient)
     end
-    reset_session
+    session.delete(:ingredients_list)
     redirect_to @recipe
   end
 
@@ -40,6 +42,8 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     @recipe.update(recipe_params)
+    collection = @recipe.ingredient_ids
+    @recipe.ingredient_ids = handle_dem_checked_boxes(params[:recipe][:ingredient_ids], collection)
     redirect_to @recipe
   end
 
