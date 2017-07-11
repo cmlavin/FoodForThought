@@ -1,3 +1,16 @@
-<h1>Poopy Kaka</h1>
-
-<%= link_to "Create a new user", new_user_path %><br>
+<% if logged_in? %>
+  <h1>Welcome back <%= current_user %>!</h1>
+  <h3>All of <%= @user.first_name %>'s recipes</h3>
+  <% @recipes.each do |recipe| %>
+  <%= link_to recipe.name, recipe_path(recipe) %>
+  <% end %>
+  <h3>All of <%= @user.first_name %>'s stories</h3>
+  <% @stories.each do |story| %>
+  <%= link_to story.title, story_path(story) %>
+  <% end %>
+  <h3> Saved recipes </h3>
+  <h3> Saved stories </h3>
+<% else %>
+  <h1> Welcome </h1>
+  <%= link_to "Signup for an account", new_user_path %><br>
+<% end %>

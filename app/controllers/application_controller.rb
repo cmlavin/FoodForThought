@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :logged_in?, :current_ingredients, :handle_dem_checked_boxes, :handle_dem_unchecked_boxes
+  helper_method :current_user, :logged_in?, :current_ingredients, :handle_dem_checked_boxes, :handle_dem_unchecked_boxes, :current_recipes
 
   def current_user
     if session[:user_id]
@@ -38,5 +38,6 @@ class ApplicationController < ActionController::Base
     end
     format_dem_boxes.map { |box| box.to_i}
   end
+end
 
 end

@@ -10,6 +10,13 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @user = current_user
+    @recipes = Recipe.all.select do |recipe|
+      recipe.author_id == @user.id
+    end
+    @stories = Story.all.select do |story|
+      story.author_id == @user.id
+    end
   end
 
   def create
