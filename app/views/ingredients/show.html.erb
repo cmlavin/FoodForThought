@@ -1,0 +1,6 @@
+<h1><%= @ingredient.name %></h1>
+<p> Cost: $<%= @ingredient.cost%></p>
+<p> Allergen: <%= @ingredient.allergen%></p>
+<%= form_for @ingredient, method: :delete do |f| %>
+  <%= f.submit "Delete" %>
+<% end %>

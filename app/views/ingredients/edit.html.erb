@@ -1,0 +1,14 @@
+<h1>Edit Ingredient: <%= @ingredient.name%></h1>
+<%= form_for @ingredient do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :cost %>
+  <%= f.number_field :cost, class: :text_field, step: :any %>
+
+  <%= f.label :allergen %>
+  <%= f.select( :allergen, options_for_select(@allergy_types), { :prompt =>
+true } ) %>
+
+  <%= f.submit %>
+<% end %>
