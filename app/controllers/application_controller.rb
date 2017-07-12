@@ -38,6 +38,5 @@ class ApplicationController < ActionController::Base
     end
     format_dem_boxes.map { |box| box.to_i}
   end
-end
 
 end
