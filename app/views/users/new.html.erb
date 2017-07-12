@@ -1,27 +1,33 @@
 <div class="row">
 
-<div class="col s10 push-s1 m8 push-m2 l6 push-l3">
-<h1>User Form</h1>
-<%= form_for @user do |f| %>
+  <div class="col s10 push-s1 m8 push-m2 l6 push-l3">
+    <h2>Sign Up</h2>
+    <%= form_for @user do |f| %>
 
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %><br>
+    <div class="row">
+      <div class="col s12 m6 l6">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name%><br>
+      </div>
+      <div class="col s12 m6 l6">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %><br>
+      </div>
+    </div>
+    <div class="row">
+      <%= f.label :user_name %>
+      <%= f.text_field :user_name %><br>
+    </div>
+    <div class="row">
+      <%= f.label :password %>
+      <%= f.password_field :password %><br>
+    </div>
+    <div class="row">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %><br>
+    </div>
 
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %><br>
-
-  <%= f.label :user_name %>
-  <%= f.text_field :user_name %><br>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %><br>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %><br>
-
-
-
-<%= f.submit %>
-<% end %>
-</div>
+    <%= f.submit "Submit", class: "btn red lighten-1 hoverable waves-effect waves-light" %>
+    <% end %>
+  </div>
 </div>
