@@ -19,6 +19,11 @@
 <%= recipe.updated_at ? "Updated at: #{recipe.updated_at}" :  "Created at: #{recipe.created_at}"%><br>
 <% end %>
 
+<% if current_user %>
+  <%= link_to "Save Story", favorite_story_path(@story, type: "favorite"), method: :put %>
+  <%= link_to "Unsave Story", favorite_story_path(@story, type: "unfavorite"), method: :put %>
+<% end %>
+
 <h3>Add Comment:</h3>
 <%= form_for @comment  do |f| %>
   <%= f.text_field :reader_id, value: @comment.reader, type: :hidden%>

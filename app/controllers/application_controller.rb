@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
     session[:ingredients_list] ||= []
   end
 
+  def current_recipes
+    session[:recipes_list] ||= []
+  end
+
   def handle_dem_unchecked_boxes(dem_boxes)
     format_dem_boxes = current_ingredients.select do |box|
       !dem_boxes.include?(box.to_s)

@@ -6,10 +6,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-  end
-
-  def index
-    @users = User.all
     @user = current_user
     @recipes = Recipe.all.select do |recipe|
       recipe.author_id == @user.id
@@ -17,6 +13,16 @@ class UsersController < ApplicationController
     @stories = Story.all.select do |story|
       story.author_id == @user.id
     end
+    @fav_recipe = @user.fav_recipes.select do |fav_recipe|
+      Recipe.find(fav_recipe.id)
+    end
+    @fav_story = @user.fav_stories.select do |fav_story|
+      Story.find(fav_story.id)
+    end
+  end
+
+  def index
+    @users = User.all
   end
 
   def create

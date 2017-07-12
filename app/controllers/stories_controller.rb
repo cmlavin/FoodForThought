@@ -20,7 +20,6 @@ class StoriesController < ApplicationController
     end
     @story.save
     reset_session
-    byebug
     redirect_to @story
   end
 
@@ -43,6 +42,18 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
     @story.destroy
     redirect_to stories_path
+  end
+
+  def favorite
+    @story = Story.find(params[:id])
+    type = params[:type]
+    if type == "favorite"
+      current_user.fav_stories << @story
+      redirect_back fallback_location: @story
+    elsif type == "unfavorite"
+      current_user.fav_stories.delete(@story)
+      redirect_back fallback_location: @story
+    end
   end
 
   private

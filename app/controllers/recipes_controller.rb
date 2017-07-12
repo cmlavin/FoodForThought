@@ -54,13 +54,14 @@ class RecipesController < ApplicationController
   end
 
   def favorite
+    @recipe = Recipe.find(params[:id])
     type = params[:type]
     if type == "favorite"
-      current_user.favorites << @recipe
-      redirect_to :back, notice: 'You favorited #{@recipe.name}'
+      current_user.fav_recipes << @recipe
+      redirect_back fallback_location: @recipe
     elsif type == "unfavorite"
-      current_user.favorites.delete(@recipe)
-      redirect_to :back, notice: 'Unfavorited #{@recipe.name}'
+      current_user.fav_recipes.delete(@recipe)
+      redirect_back fallback_location: @recipe
     end
   end
 
