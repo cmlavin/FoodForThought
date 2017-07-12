@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711195112) do
+ActiveRecord::Schema.define(version: 20170712173205) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "reader_id"
@@ -18,6 +18,16 @@ ActiveRecord::Schema.define(version: 20170711195112) do
     t.datetime "publish_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "story_id"
+  end
+
+  create_table "favorite_recipes", force: :cascade do |t|
+    t.integer "reader_id"
+    t.integer "recipe_id"
+  end
+
+  create_table "favorite_stories", force: :cascade do |t|
+    t.integer "reader_id"
     t.integer "story_id"
   end
 

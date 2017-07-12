@@ -53,6 +53,17 @@ class RecipesController < ApplicationController
     redirect_to new_recipe_path
   end
 
+  def favorite
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorites << @recipe
+      redirect_to :back, notice: 'You favorited #{@recipe.name}'
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@recipe)
+      redirect_to :back, notice: 'Unfavorited #{@recipe.name}'
+    end
+  end
+
 private
   def recipe_params
     params.require(:recipe).permit(:name, :instruction, :difficulty, :image_url)

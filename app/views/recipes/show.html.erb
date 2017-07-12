@@ -11,3 +11,8 @@
 <%= @recipe.updated_at ? "Updated at: #{@recipe.updated_at}" :  "Created at: #{@recipe.created_at}"%><br>
 <%= button_to "Edit Recipe", { :action => "edit" }, :method => :get %>
 <%= button_to "Delete Recipe", { :action => "destroy" }, :method => :delete %>
+
+<% if current_user %>
+  <%= link_to "Save", favorite_recipe_path(@recipe, type: "favorite"), method: :put %>
+  <%= link_to "Unsave", favorite_recipe_path(@recipe, type: "unfavorite"), method: :put %>
+<% end %>
