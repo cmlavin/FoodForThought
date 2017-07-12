@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="2060px" height="560px" viewBox="0 0 2060 560" enable-background="new 0 0 2060 560" xml:space="preserve">
+<g>
+	<g id="label">
+		<path id="color_2_" fill="#E84855" d="M526.467,279.998c0,134.562-109.082,243.642-243.646,243.642
+			c-134.557,0-243.638-109.079-243.638-243.642c0-134.557,109.081-243.638,243.638-243.638
+			C417.385,36.36,526.467,145.441,526.467,279.998z"/>
+	</g>
+	<g id="icon">
+		<g>
+			<g>
+				<g>
+					<path fill="#FFFFFF" d="M445.971,138.575v284.152h-26.337V303.155h-10.962V179.17c0,0-4.388-34.007,15.354-40.595H445.971z"/>
+				</g>
+			</g>
+			<g>
+				<g>
+					<path fill="#FFFFFF" d="M158.566,231.382v190.042h-24.44V231.382c0,0-14.767-6.523-14.441-26.658v-67.445h6.104v66.882h8.886
+						v-66.882h6.115v66.882h8.339v-66.882h6.117v66.882h8.891v-66.882h6.664v67.445C170.8,204.725,171.766,223.927,158.566,231.382z
+						"/>
+				</g>
+			</g>
+		</g>
+	</g>
+	<rect x="194.726" y="133.918" fill="#FFFFFF" width="153.582" height="290.563"/>
+	<path fill="#FFFFFF" d="M369.061,133.918h-12.453v290.563h12.453c6.876,0,12.453-5.575,12.453-12.452V146.371
+		C381.517,139.494,375.94,133.918,369.061,133.918z"/>
+	<polygon fill="#FFFFFF" points="198.878,449.385 205.101,443.158 211.328,449.385 211.328,428.631 198.878,428.631 	"/>
+</g>
+<g>
+	<g>
+		<text transform="matrix(1 0 0 1 572 248.127)" fill="#E84855" font-family="'Roboto-Black'" font-size="255.2255">FOOD FOR</text>
+	</g>
+	<text transform="matrix(1 0 0 1 578 492.8848)" fill="#E84855" font-family="'Roboto-Black'" font-size="255.2255">THOUGHT</text>
+</g>
+</svg>
