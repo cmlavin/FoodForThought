@@ -1,4 +1,9 @@
+<div class="row">
+
+<div class="col s10 push-s1 m8 push-m2 l6 push-l3">
 <h1>All Stories:</h1>
 <% @stories.each do |story| %>
 <%= link_to story.title, story_path(story) %>
 <% end %>
+</div>
+</div>

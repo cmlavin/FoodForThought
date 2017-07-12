@@ -1,13 +1,24 @@
-<h1><%= @recipe.name %></h1>
-<img src="<%= @recipe.image_url%>" alt="Recipe Image">
-<p> Cooking Difficulty: <%= @recipe.difficulty%></p>
-<h2>Ingredients:</h2>
-<ul>
-  <% @recipe.ingredients.each do |ingredient| %>
-  <li><%= ingredient.name %></li>
-  <% end %>
-</ul>
-<p> Cooking Instructions: <%= @recipe.instruction%></p>
-<%= @recipe.updated_at ? "Updated at: #{@recipe.updated_at}" :  "Created at: #{@recipe.created_at}"%><br>
-<%= button_to "Edit Recipe", { :action => "edit" }, :method => :get %>
-<%= button_to "Delete Recipe", { :action => "destroy" }, :method => :delete %>
+<div class="row">
+
+  <div class="col s10 push-s1 m8 push-m2 l6 push-l3">
+    <h1><%= @recipe.name %></h1>
+    <img class="responsive-img" src="<%= @recipe.image_url%>" alt="Recipe Image">
+    <p> Cooking Difficulty: <%= @recipe.difficulty%></p>
+    <h2>Ingredients:</h2>
+    <ul>
+      <% @recipe.ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %></li>
+      <% end %>
+    </ul>
+    <p> Cooking Instructions: <%= @recipe.instruction%></p>
+    <%= @recipe.updated_at ? "Updated at: #{@recipe.updated_at}" :  "Created at: #{@recipe.created_at}"%><br>
+    <div class="row">
+      <div class="col s6">
+        <%= button_to "Edit Recipe", { :action => "edit" }, :method => :get, class: "btn" %>
+      </div>
+      <div class="col s6">
+        <%= button_to "Delete Recipe", { :action => "destroy" }, :method => :delete, class: "btn"%>
+      </div>
+    </div>
+  </div>
+</div>
