@@ -22,8 +22,8 @@
       </div>
     </div>
     <% if current_user %>
-      <%= link_to "Save", favorite_recipe_path(@recipe, type: "favorite"), method: :put %>
-      <%= link_to "Unsave", favorite_recipe_path(@recipe, type: "unfavorite"), method: :put %>
+      <%= link_to "Save Recipe", favorite_recipe_path(@recipe, type: "favorite"), method: :put %>
+      <%= link_to "Unsave Recipe", favorite_recipe_path(@recipe, type: "unfavorite"), method: :put %>
     <% end %>
   </div>
 </div>
