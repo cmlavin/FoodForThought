@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :stories
   resources :recipes
   resources :users
+  resources :recipes do
+    put :favorite, on: :member
+  end
 
   get '/login', to: 'sessions#new', as: 'login'
 
