@@ -25,10 +25,12 @@
   <%= f.text_area :instruction %>
 
   <label>Difficulty:</label>
-  <%= f.select :difficulty, (1..5) %>
+  <%= f.select :difficulty, (1..5) %><br>
 
-  <label>Image URL:</label>
-  <%= f.text_field :image_url %>
+  <%= f.fields_for @image do |u| %>
+    <label>Upload Image</label>
+    <%= u.file_field :image %><br>
+  <% end %>
 
   <%= f.submit %>
 <% end %>

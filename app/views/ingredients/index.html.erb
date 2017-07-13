@@ -3,7 +3,7 @@
 <div class="col s10 push-s1 m8 push-m2 l6 push-l3">
 <h1>All Ingredients:</h1>
 <% @ingredients.each do |ingredient| %>
-  <p> <%= link_to recipe.name, recipe_path(recipe.id)%></p>
+  <p> <%= link_to ingredient.name, ingredient_path(ingredient.id)%></p>
 <% end %>
 </div>
 </div>

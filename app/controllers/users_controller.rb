@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @user = current_user
     @recipes = Recipe.all.select do |recipe|
       recipe.author_id == @user.id
@@ -27,7 +26,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    redirect_to @user
+    redirect_to login_path
   end
 
   def edit

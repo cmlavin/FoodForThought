@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
     @ingredients = current_ingredients.map do |ingredient|
       Ingredient.find(ingredient)
     end
+    @image = Image.new
   end
 
   def create
@@ -17,6 +18,8 @@ class RecipesController < ApplicationController
     current_ingredients.each do |ingredient|
       @recipe.ingredients << Ingredient.find(ingredient)
     end
+    @image = Image.create(image_params)
+    @recipe.image_url = @image.image.url
     @recipe.save
     session.delete(:ingredients_list)
     redirect_to @recipe
@@ -70,4 +73,7 @@ private
     params.require(:recipe).permit(:name, :instruction, :difficulty, :image_url)
   end
 
+  def image_params
+    params[:recipe].require(:image).permit!
+  end
 end
