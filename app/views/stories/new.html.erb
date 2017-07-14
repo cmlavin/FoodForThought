@@ -1,25 +1,33 @@
 <div class="row">
 
-<div class="col s10 push-s1 m8 push-m2 l6 push-l3">
-<h1>Create a new story</h1>
-<h2>Add Recipe(s):</h2>
-  <ul>
-    <% @recipes.each do |recipe| %>
-    <li><%= recipe.name %></li>
-    <% end %>
-  </ul>
-  <%= form_tag add_recipe_path, method: :patch do %>
-  <%= select_tag 'recipe', options_from_collection_for_select(@user.recipes, 'id', 'name') %>
-  <%= submit_tag "Add Recipe"%>
-  <% end %>
+  <div class="col s10 push-s1 m8 push-m2 l6 push-l3">
+    <h1>Create a new story</h1>
+    <h5>Add Recipe(s):</h5>
 
-<%= form_for @story do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-  <%= f.text_field :publish_date, {type: "hidden", value: Date.today}%>
-  <%= f.submit "Create new story" %>
-<% end %>
-</div>
+    <%= form_tag add_recipe_path, method: :post do %>
+    <h5>Recipes</h5>
+    <ul>
+      <% @recipes.each do |recipe| %>
+      <li><%= check_box_tag 'recipe_ids[]', recipe.id, nil, id: "#{recipe.name}"  %>
+        <%= label_tag recipe.name, nil, for: recipe.name %></li>
+      <% end %>
+    </ul>
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <label for="recipe">Recipes:</label><br>
+        <%= select_tag 'recipe', options_from_collection_for_select(@user.recipes, 'id', 'name'), {:include_blank => true, class: "input-field", style: "display:inline"} %>
+      </div>
+    </div>
+    <%= submit_tag "Add/Remove Recipe", class: "waves-effect waves-light input-field btn red lighten-1" %>
+    <% end %>
+
+    <%= form_for @story do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <%= f.text_field :publish_date, {type: "hidden", value: Date.today}%>
+    <%= f.submit "Create new story" %>
+    <% end %>
+  </div>
 </div>

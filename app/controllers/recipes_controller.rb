@@ -50,6 +50,15 @@ class RecipesController < ApplicationController
     #update the date format in the erb
   end
 
+  def add_recipe
+    if !params[:recipe].empty?
+      @recipe = Recipe.find(params[:recipe])
+      current_recipes << @recipe.id
+    end
+    current_recipes = handle_unchecked_recipe_boxes(params[:recipe_ids]) if params[:recipe_ids]
+    redirect_to new_story_path
+  end
+
   def update
     @recipe = Recipe.find(params[:id])
     @recipe.update(recipe_params)
@@ -67,12 +76,6 @@ class RecipesController < ApplicationController
     redirect_to recipes_path
   end
 
-  def add_recipe
-    byebug
-    @recipe = Recipe.find(params[:id])
-    current_recipes << @recipe.id
-    redirect_to new_recipe_path
-  end
 
   def favorite
     @recipe = Recipe.find(params[:id])
