@@ -4,4 +4,5 @@ class Story < ApplicationRecord
   has_many :recipes, through: :recipe_stories
   has_many :comments
   has_many :readers, through: :comments
+  validates :title, :content, presence: true
 end
