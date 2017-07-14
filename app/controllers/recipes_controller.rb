@@ -9,6 +9,10 @@ class RecipesController < ApplicationController
     end
   end
 
+  def search
+    
+  end
+
   def new
     @recipe = Recipe.new
     @ingredients = current_ingredients.map do |ingredient|
