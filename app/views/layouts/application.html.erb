@@ -1,7 +1,4 @@
-<%= form_tag recipes_path, :method => "get" do %>
-<%= text_field_tag :search, params[:search] %>
-<%= submit_tag "Search Recipes", :name => nil %>
-<% end %>
+
 
 
 <!DOCTYPE html>
@@ -46,7 +43,10 @@
 <nav class="white" role="navigation">
   <div class="nav-wrapper container">
     <a id="logo-container" href="/" class="brand-logo container"><img vspace="7" src="/img/food_for_thought.svg" height="50" alt="Food for Thought logo"></a>
+
+    <%= link_to "Search Recipes", search_recipes_path, class: "right" %>
     <ul class="right hide-on-med-and-down">
+
       <% if logged_in? %>
       <a class="dropdown-button" href="#!" data-activates="user_dropdown">Account<i class="material-icons right">arrow_drop_down</i></a></li>
       <% else %>
