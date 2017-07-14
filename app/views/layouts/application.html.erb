@@ -9,9 +9,6 @@
   <title>Food for Thought</title>
   <%= csrf_meta_tags %>
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
 
 <link href="css/YTPlayer.css" media="all" rel="stylesheet" type="text/css">
 
@@ -27,7 +24,9 @@
   <header class="Site-header">
   <% if logged_in? %>
   <ul id="user_dropdown" class="dropdown-content">
-    <li><%= link_to "My Account", user_path(current_user) %></li>
+    <li><%= link_to "Account", user_path(current_user) %></li>
+    <li><%= link_to "Write Recipe", new_recipe_path %></li>
+    <li><%= link_to "Write Story", new_story_path %></li>
     <li>
       <!--
       <%= form_tag '/sessions', method: :delete do %>
@@ -44,14 +43,15 @@
   <div class="nav-wrapper container">
     <a id="logo-container" href="/" class="brand-logo container"><img vspace="7" src="/img/food_for_thought.svg" height="50" alt="Food for Thought logo"></a>
 
-    <%= link_to "Search Recipes", search_recipes_path, class: "right" %>
-    <ul class="right hide-on-med-and-down">
 
+    <ul class="col s1 m2 right hide-on-med-and-down">
+      <li><%= link_to "Search Recipes", search_recipes_path %></li>
       <% if logged_in? %>
-      <a class="dropdown-button" href="#!" data-activates="user_dropdown">Account<i class="material-icons right">arrow_drop_down</i></a></li>
+      <li><a class="dropdown-button" href="#!" data-activates="user_dropdown"><i class="material-icons right">menu</i></a></li>
       <% else %>
       <li><%= link_to "Log In", login_path %> </li>
       <% end %>
+
     </ul>
 
     <ul id="nav-mobile" class="side-nav">
