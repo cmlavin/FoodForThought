@@ -27,8 +27,12 @@ class RecipesController < ApplicationController
     current_ingredients.each do |ingredient|
       @recipe.ingredients << Ingredient.find(ingredient)
     end
-    @image = Image.create(image_params)
-    @recipe.image_url = @image.image.url
+    if params[:recipe][:image]
+      @image = Image.create(image_params)
+      @recipe.image_url = @image.image.url
+    else
+      @recipe.image_url = "https://s3.amazonaws.com/food-for-thought-bucket/mealIcon.jpg"
+    end
     @recipe.save
     session.delete(:ingredients_list)
     redirect_to @recipe
@@ -41,6 +45,7 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+    @image = Image.new
     #update the date format in the erb
   end
 
@@ -49,6 +54,9 @@ class RecipesController < ApplicationController
     @recipe.update(recipe_params)
     collection = @recipe.ingredient_ids
     @recipe.ingredient_ids = handle_dem_checked_boxes(params[:recipe][:ingredient_ids], collection)
+    @image = Image.create(image_params)
+    @recipe.image_url = @image.image.url
+    @recipe.save
     redirect_to @recipe
   end
 

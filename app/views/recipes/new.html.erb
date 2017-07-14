@@ -28,9 +28,9 @@
         <label for="recipe_difficulty">Difficulty:</label><br>
         <%= f.select :difficulty, (1..5), {}, {class: "input-field", style: "display:inline;"} %>
       </div>
-      <div class="file-field input-field col s12 m6">
       <%= f.fields_for @image do |u| %>
       <label>Upload Image</label>
+      <div class="file-field input-field col s12 m6">
         <div class="waves-effect waves-light btn red lighten-1">
           <span>Choose File</span>
           <input class="input-field" type="file" name="recipe[image][image]" id="recipe_image_image">
