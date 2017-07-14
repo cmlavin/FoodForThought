@@ -4,17 +4,15 @@
 <h1>Post a New Recipe</h1>
 <%= form_tag add_ingredient_path, method: :post do %>
 
-<h2>List of Ingredients:</h2>
-<ul>
-  <% @ingredients.each do |ingredient| %>
-  <li> <%= check_box_tag 'ingredient_ids[]', ingredient.id -%>
-      <%= h ingredient.name -%>
-  </li>
-  <% end %>
-</ul>
-<label>Ingredient Name:</label>
-<%= text_field_tag :name %><br>
-<%= submit_tag "Add/Remove Ingredient" %>
+  <h6>List of Ingredients:</h6>
+    <% @ingredients.each do |ingredient| %>
+      <p> <%= check_box_tag 'ingredient_ids[]', ingredient.id -%>
+          <%= h ingredient.name -%>
+      </p>
+      <% end %>
+  <label>Ingredient Name:</label>
+  <%= text_field_tag :name %><br>
+  <%= submit_tag "Add/Remove Ingredient" %>
 <% end %>
 
 <%= form_for @recipe do |f| %>
@@ -28,7 +26,7 @@
   <%= f.select :difficulty, (1..5) %><br>
 
   <%= f.fields_for @image do |u| %>
-    <label>Upload Image</label>
+    <label>Upload Image:</label>
     <%= u.file_field :image %><br>
   <% end %>
 
