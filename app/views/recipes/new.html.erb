@@ -1,13 +1,12 @@
 <div class="row">
-
+  
   <div class="col s10 push-s1 m8 push-m2 l6 push-l3">
     <h1>Post a New Recipe</h1>
     <%= form_tag add_ingredient_path, method: :post do %>
-
-    <h2>List of Ingredients:</h2>
+    <h5>List of Ingredients:</h5>
     <ul>
       <% @ingredients.each do |ingredient| %>
-      <li> <%= check_box_tag 'ingredient_ids[]', ingredient.id, nil, id: "#{ingredient.name}"  -%>
+      <li> <%= check_box_tag 'ingredient_ids[]', ingredient.id, nil, id: "#{ingredient.name}"  %>
         <%= label_tag ingredient.name, nil, for: ingredient.name %>
       </li>
       <% end %>

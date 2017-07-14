@@ -43,4 +43,12 @@ class ApplicationController < ActionController::Base
     format_dem_boxes.map { |box| box.to_i}
   end
 
+  def handle_unchecked_recipe_boxes(boxes)
+    format_boxes = current_recipes.select do |box|
+      !boxes.include?(box.to_s)
+    end
+    session.delete(:recipes_list)
+    session[:recipes_list] = format_boxes
+  end
+
 end

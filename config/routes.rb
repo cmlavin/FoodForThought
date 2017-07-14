@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:edit, :destroy, :create, :update, :destroy]
   resources :ingredients
   resources :stories
+  post '/recipes/add_recipe', to: 'recipes#add_recipe', as: 'add_recipe'
   resources :recipes
   resources :users
   resources :recipes do
@@ -20,8 +21,6 @@ Rails.application.routes.draw do
   post '/ingredients/add_ingredient', to: 'ingredients#add_ingredient', as: 'add_ingredient'
 
   get '/signup', to: 'users#new', as: 'signup'
-
-  patch '/recipes/add_recipe', to: 'recipes#add_recipe', as: 'add_recipe'
 
   get '/', to: 'static#index', as: 'home'
 
