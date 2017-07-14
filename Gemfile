@@ -36,6 +36,8 @@ gem 'bcrypt', '~> 3.1.7'
 #AWS
 gem 'aws-sdk'
 gem 'paperclip'
+gem 'materialize-sass'
+gem 'jquery-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
