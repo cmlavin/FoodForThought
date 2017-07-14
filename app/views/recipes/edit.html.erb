@@ -24,7 +24,7 @@
   <% end %>
 
   <label>Uncheck to Remove Ingredient(s):</label>
-  <%= f.collection_check_boxes :ingredient_ids, @recipe.ingredients, :id, :name%><br>
+  <%= f.collection_check_boxes :ingredient_ids, @recipe.ingredients, :id, :name %><br>
 
   <%= f.submit %>
 <% end %>

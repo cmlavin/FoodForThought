@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :logged_in?, :current_ingredients, :handle_dem_checked_boxes, :handle_dem_unchecked_boxes, :current_recipes
+  helper_method :current_user, :logged_in?, :current_ingredients, :current_ingredients_hash, :handle_dem_checked_boxes, :handle_dem_unchecked_boxes, :current_recipes
 
   def current_user
     if session[:user_id]
@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
     session[:ingredients_list] ||= []
   end
 
+  def current_ingredients_hash
+    session[:ingredients_hash] ||= []
+  end
+
   def current_recipes
     session[:recipes_list] ||= []
   end
@@ -32,7 +36,12 @@ class ApplicationController < ActionController::Base
     format_dem_boxes = current_ingredients.select do |box|
       !dem_boxes.include?(box.to_s)
     end
+    format_dem_hash = current_ingredients_hash.select do |hash|
+      !dem_boxes.include?(hash["id"].to_s)
+    end
     session.delete(:ingredients_list)
+    session.delete(:ingredients_hash)
+    session[:ingredients_hash] = format_dem_hash
     session[:ingredients_list] = format_dem_boxes
   end
 

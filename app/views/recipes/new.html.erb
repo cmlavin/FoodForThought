@@ -7,13 +7,17 @@
     <h2>List of Ingredients:</h2>
     <ul>
       <% @ingredients.each do |ingredient| %>
-      <li> <%= check_box_tag 'ingredient_ids[]', ingredient.id, nil, id: "#{ingredient.name}"  -%>
-        <%= label_tag ingredient.name, nil, for: ingredient.name %>
+      <li> <%= check_box_tag 'ingredient_ids[]', ingredient[:inst].id, nil, id: "#{ingredient[:inst].name}"  -%>
+        <%= label_tag "#{ingredient[:inst].name} #{ingredient[:quantity]} #{ingredient[:unit]}", nil, for: "#{ingredient[:inst].name}" %>
       </li>
       <% end %>
     </ul>
     <label>Ingredient Name:</label>
     <%= text_field_tag :name %><br>
+    <label>Ingredient Quantity:</label>
+    <%= text_field_tag :quantity %><br>
+    <label>Ingredient Unit:</label>
+    <%= text_field_tag :unit %><br>
     <%= submit_tag "Add/Remove Ingredient", class: "waves-effect waves-light btn red lighten-1" %>
     <% end %>
     <br>

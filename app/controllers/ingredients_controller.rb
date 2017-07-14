@@ -35,17 +35,23 @@ class IngredientsController < ApplicationController
   end
 
   def add_ingredient
-    if !params[:name].empty?
+    if !params[:name].empty? && !params[:quantity].empty? && !params[:unit].empty?
       @ingredient = Ingredient.find_or_create_by(name: params[:name])
+      @quantity = params[:quantity].to_f
+      @unit = params[:unit]
       current_ingredients << @ingredient.id
+      current_ingredients_hash << {id: @ingredient.id, quantity: @quantity, unit: @unit }
+    else
+      #throw error, missing name, quantity or units
     end
-    current_ingredients = handle_dem_unchecked_boxes(params[:ingredient_ids]) if params[:ingredient_ids]
+    handle_dem_unchecked_boxes(params[:ingredient_ids]) if params[:ingredient_ids]
     redirect_to new_recipe_path
   end
 
 private
   def ingredient_params
-    params.require(:ingredient).permit(:name, :cost, :allergen)
+    params.require(:ingredient).permit(:name, :quantity, :unit)
+    #:allergen
   end
 
 end
