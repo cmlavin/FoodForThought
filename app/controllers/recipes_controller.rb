@@ -15,8 +15,9 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @ingredients = current_ingredients.map do |ingredient|
-      Ingredient.find(ingredient)
+    @ingredients = current_ingredients_hash.map do |ingredient_hash|
+      {inst: Ingredient.find(ingredient_hash["id"]), quantity: ingredient_hash["quantity"], unit: ingredient_hash["unit"]}
+      #ingredient.id
     end
     @image = Image.new
   end

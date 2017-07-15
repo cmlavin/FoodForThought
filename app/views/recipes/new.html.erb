@@ -1,18 +1,22 @@
 <div class="row">
-  
+
   <div class="col s10 push-s1 m8 push-m2 l6 push-l3">
     <h1>Post a New Recipe</h1>
     <%= form_tag add_ingredient_path, method: :post do %>
     <h5>List of Ingredients:</h5>
     <ul>
       <% @ingredients.each do |ingredient| %>
-      <li> <%= check_box_tag 'ingredient_ids[]', ingredient.id, nil, id: "#{ingredient.name}"  %>
-        <%= label_tag ingredient.name, nil, for: ingredient.name %>
+      <li> <%= check_box_tag 'ingredient_ids[]', ingredient[:inst].id, nil, id: "#{ingredient[:inst].name}"  -%>
+        <%= label_tag "#{ingredient[:inst].name} #{ingredient[:quantity]} #{ingredient[:unit]}", nil, for: "#{ingredient[:inst].name}" %>
       </li>
       <% end %>
     </ul>
     <label>Ingredient Name:</label>
     <%= text_field_tag :name %><br>
+    <label>Ingredient Quantity:</label>
+    <%= text_field_tag :quantity %><br>
+    <label>Ingredient Unit:</label>
+    <%= text_field_tag :unit %><br>
     <%= submit_tag "Add/Remove Ingredient", class: "waves-effect waves-light btn red lighten-1" %>
     <% end %>
     <br>
