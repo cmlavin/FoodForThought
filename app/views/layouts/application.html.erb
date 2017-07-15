@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,12 +8,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Food for Thought</title>
   <%= csrf_meta_tags %>
-
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script> -->
-
+<link href="css/YTPlayer.css" media="all" rel="stylesheet" type="text/css">
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -24,11 +25,11 @@
     <li><%= link_to "Account", user_path(current_user) %></li>
     <li><%= link_to "Write Recipe", new_recipe_path %></li>
     <li><%= link_to "Write Story", new_story_path %></li>
-    <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+    <li>
+    <%= link_to "Log Out", logout_path, method: :delete %>
+  </li>
 </ul>
 <% end %>
-
-<!-- <%= link_to "Log Out", logout_path, method: :delete %> -->
 
 <nav class="white" role="navigation">
   <div class="nav-wrapper container">
@@ -36,7 +37,7 @@
 
 
     <ul class="col s1 m2 right hide-on-med-and-down">
-      <li><%= link_to "Search Recipes", search_recipes_path %></li>
+      <li><%= link_to search_recipes_path do %><i class="material-icons left">search</i>Search Recipes<% end %></li>
       <% if logged_in? %>
       <li><a class="dropdown-button" href="#!" data-activates="user_dropdown"><i class="material-icons right">menu</i></a></li>
       <% else %>
@@ -46,15 +47,14 @@
     </ul>
 
     <ul id="nav-mobile" class="side-nav">
-      <li><%= link_to "Search Recipes", search_recipes_path %></li>
+      <li><%= link_to search_recipes_path do %>Search Recipes<i class="material-icons right">search</i><% end %></li>
       <% if logged_in? %>
-      <li><%= link_to "Account", user_path(current_user) %></li>
-      <li><%= link_to "Write Recipe", new_recipe_path %></li>
-      <li><%= link_to "Write Story", new_story_path %></li>
-      <li><%= link_to "Log Out", logout_path, method: :delete %></li>
-      <% else %>
-      <li><%= link_to "Log In", login_path %> </li>
-      <% end %>
+        <li><%= link_to "Account", user_path(current_user) %></li>
+        <li><%= link_to "Write Recipe", new_recipe_path %></li>
+        <li><%= link_to "Write Story", new_story_path %></li>
+        <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+    <% end %>
+
     </ul>
     <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
   </div>
@@ -100,9 +100,8 @@
 
 
 <!--  Scripts-->
-<!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
-<!-- <script src="/js/materialize.js"></script>
-<script src="/js/init.js"></script> -->
+<script src="/js/materialize.js"></script>
+<script src="/js/init.js"></script>
 
 </body>
 </html>

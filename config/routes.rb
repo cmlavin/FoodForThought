@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :ingredients
   resources :stories
   post '/recipes/add_recipe', to: 'recipes#add_recipe', as: 'add_recipe'
+    get '/recipes/search', to: 'recipes#search', as: "search_recipes"
   resources :recipes
   resources :users
   resources :recipes do
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
 
   get '/', to: 'static#index', as: 'home'
 
-  get '/recipes/search', to: 'recipes#search', as: "search_recipes"
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

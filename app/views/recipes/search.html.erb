@@ -1,6 +1,9 @@
-<div class="container">
+<div class="container"><br>
 <%= form_tag recipes_path, :method => "get" do %>
+<%= label_tag :search, "Search Recipes" %>
 <%= text_field_tag :search, params[:search], class: "input_field" %>
-<%= submit_tag "Search Recipes", :name => nil, class: "btn red lighten-1" %>
+<!-- <%= submit_tag "Search Recipes", :name => nil, class: "btn red lighten-1" %> -->
+<button type="submit" class="btn red lighten-1" data-disable-with="Search Recipes"><i class="material-icons left">search</i>Search Recipes</button>
 <% end %>
+<br>
 </div>
