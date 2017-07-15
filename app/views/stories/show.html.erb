@@ -20,8 +20,8 @@
 <% end %>
 
 <% if current_user %>
-  <%= link_to "Save Story", favorite_story_path(@story, type: "favorite"), method: :put %>
-  <%= link_to "Unsave Story", favorite_story_path(@story, type: "unfavorite"), method: :put %>
+  <%= link_to "Add Story to Favorites", favorite_story_path(@story, type: "favorite"), method: :put %>
+  <%= link_to "Remove Story from Favorites", favorite_story_path(@story, type: "unfavorite"), method: :put %>
 <% end %>
 
 <h3>Add Comment:</h3>

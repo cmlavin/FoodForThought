@@ -9,8 +9,8 @@
       <ul id="dropdown1" class="dropdown-content">
         <li><%= link_to "Edit Recipe", { :action => "edit" }, :method => :get %></li>
         <li><%= link_to "Delete Recipe", { :action => "destroy" }, :method => :delete%></li>
-        <li><%= link_to "Save Recipe", favorite_recipe_path(@recipe, type: "favorite"), method: :put %></li>
-        <li><%= link_to "Unsave Recipe", favorite_recipe_path(@recipe, type: "unfavorite"), method: :put %></li>
+        <li><%= link_to "Add Recipe to Favorites", favorite_recipe_path(@recipe, type: "favorite"), method: :put %></li>
+        <li><%= link_to "Remove Recipe from Favorites", favorite_recipe_path(@recipe, type: "unfavorite"), method: :put %></li>
       </ul>
       <% end %>
       <div class="row">
