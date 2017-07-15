@@ -3,7 +3,7 @@
 
   <div class="card z-depth-4 grey lighten-4 col s12 m10 l8">
     <div class="card-content">
-      <% if current_user %>
+      <% if current_user == @recipe.author %>
       <a class='dropdown-button btn-floating halfway-fab btn-large waves-effect waves-light' href='#' data-activates='dropdown1'><i class="material-icons">mode_edit</i></a>
 
       <ul id="dropdown1" class="dropdown-content">
