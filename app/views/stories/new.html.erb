@@ -22,12 +22,16 @@
     <% end %>
 
     <%= form_for @story do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
+    <div class="input-field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="input-field">
+      <%= f.label :content %>
+      <%= f.text_area :content, class: "materialize-textarea" %>
+    </div>
     <%= f.text_field :publish_date, {type: "hidden", value: Date.today}%>
-    <%= f.submit "Create new story" %>
+    <%= f.submit "Create new story", class: "waves-effect waves-light input-field btn red lighten-1" %>
     <% end %>
   </div>
 </div>
