@@ -25,8 +25,10 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.author_id = current_user.id
-    current_ingredients.each do |ingredient|
-      @recipe.ingredients << Ingredient.find(ingredient)
+    current_ingredients_hash.each do |ingredient_hash|
+      @recipe.ingredients << Ingredient.find(ingredient_hash["id"])
+      @recipe.recipe_ingredients.last.quantity = ingredient_hash["quantity"]
+      @recipe.recipe_ingredients.last.unit = ingredient_hash["unit"]
     end
     if params[:recipe][:image]
       @image = Image.create(image_params)

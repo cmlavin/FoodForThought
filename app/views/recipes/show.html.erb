@@ -26,7 +26,8 @@
           <div class="flow-text">
             <ul class="browser-default">
               <% @recipe.ingredients.each do |ingredient| %>
-              <li><%= ingredient.name %></li>
+              <% ingredient_info = @recipe.recipe_ingredients.find_by(ingredient_id:ingredient.id) %>
+              <li><%= "#{ingredient.name} #{ingredient_info.quantity} #{ingredient_info.unit}"%></li>
               <% end %>
             </ul>
           </div>
