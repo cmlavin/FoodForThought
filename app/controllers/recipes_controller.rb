@@ -27,8 +27,8 @@ class RecipesController < ApplicationController
     @recipe.author_id = current_user.id
     current_ingredients_hash.each do |ingredient_hash|
       @recipe.ingredients << Ingredient.find(ingredient_hash["id"])
-      @recipe.recipe_ingredients.last.quantity = ingredient_hash["quantity"]
-      @recipe.recipe_ingredients.last.unit = ingredient_hash["unit"]
+      @recipe.recipe_ingredients.find_by(ingredient_id:ingredient_hash["id"]).quantity = ingredient_hash["quantity"]
+      @recipe.recipe_ingredients.find_by(ingredient_id:ingredient_hash["id"]).unit = ingredient_hash["unit"]
     end
     if params[:recipe][:image]
       @image = Image.create(image_params)
@@ -66,8 +66,16 @@ class RecipesController < ApplicationController
     @recipe.update(recipe_params)
     collection = @recipe.ingredient_ids
     @recipe.ingredient_ids = handle_dem_checked_boxes(params[:recipe][:ingredient_ids], collection)
-    @image = Image.create(image_params)
-    @recipe.image_url = @image.image.url
+    if (!params[:recipe][:ingredient][:name].empty? && !params[:recipe][:ingredient][:quantity].empty? && !params[:recipe][:ingredient][:unit].empty?)
+      @ingredient = Ingredient.find_or_create_by(name: params[:recipe][:ingredient][:name])
+      @recipe.ingredients << @ingredient
+      @recipe_ingredient_att = @recipe.recipe_ingredients.find_by(ingredient_id:@ingredient.id)
+      @recipe_ingredient_att.quantity = params[:recipe][:ingredient][:quantity].to_f
+      @recipe_ingredient_att.unit = params[:recipe][:ingredient][:unit]
+      @recipe_ingredient_att.save
+    end
+    # @image = Image.create(image_params)
+    # @recipe.image_url = @image.image.url
     @recipe.save
     redirect_to @recipe
   end

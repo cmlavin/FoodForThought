@@ -13,6 +13,17 @@
     <%= f.text_field :name %>
     <label>Uncheck to Remove Ingredient(s):</label>
     <%= f.collection_check_boxes :ingredient_ids, @recipe.ingredients, :id, :name, class: ""%><br>
+
+    <label>Add Ingredient:</label><br>
+    <label>Ingredient Name:</label>
+    <input type="text" name="recipe[ingredient][name]"><br>
+
+    <label>Ingredient Quantity:</label>
+    <input type="text" name="recipe[ingredient][quantity]"><br>
+
+    <label>Ingredient Unit:</label>
+    <input type="text" name="recipe[ingredient][unit]"><br>
+
     <%= f.label :instruction %>
     <%= f.text_area :instruction %>
     <div class="row">
