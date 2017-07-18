@@ -27,6 +27,7 @@ class RecipesController < ApplicationController
     @recipe.author_id = current_user.id
     current_ingredients_hash.each do |ingredient_hash|
       @recipe.ingredients << Ingredient.find(ingredient_hash["id"])
+      @recipe.save
       @recipe.recipe_ingredients.find_by(ingredient_id:ingredient_hash["id"]).quantity = ingredient_hash["quantity"]
       @recipe.recipe_ingredients.find_by(ingredient_id:ingredient_hash["id"]).unit = ingredient_hash["unit"]
     end
