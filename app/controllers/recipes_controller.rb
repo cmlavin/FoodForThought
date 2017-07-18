@@ -74,8 +74,10 @@ class RecipesController < ApplicationController
       @recipe_ingredient_att.unit = params[:recipe][:ingredient][:unit]
       @recipe_ingredient_att.save
     end
-    # @image = Image.create(image_params)
-    # @recipe.image_url = @image.image.url
+    if image_params
+      @image = Image.create(image_params)
+      @recipe.image_url = @image.image.url
+    end
     @recipe.save
     redirect_to @recipe
   end
@@ -105,6 +107,6 @@ private
   end
 
   def image_params
-    params[:recipe].require(:image).permit!
+    params[:recipe].require(:image).permit! if params[:recipe][:image]
   end
 end
