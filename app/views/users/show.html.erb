@@ -5,8 +5,8 @@
     <% if logged_in? %>
     <h1>Welcome back, <%= current_user.first_name %>!</h1>
 
+    <h5>All of <%= @user.first_name %>'s recipes</h5>
     <div class="row">
-      <h5>All of <%= @user.first_name %>'s recipes</h5>
       <div class="fixed-action-btn toolbar">
         <a class="btn-floating btn-large red-accent lighten-1">
           <i class="large material-icons">add</i>
