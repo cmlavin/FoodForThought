@@ -38,7 +38,7 @@
     <ul class="col s1 m2 right hide-on-med-and-down">
       <li><%= link_to search_recipes_path do %><i class="material-icons left">search</i>Search Recipes<% end %></li>
       <% if logged_in? %>
-      <li><a class="dropdown-button" href="#!" data-activates="user_dropdown">Menu<i class="material-icons right">menu</i></a></li>
+      <li><a class="dropdown-button" href="#!" data-activates="user_dropdown"><i class="material-icons right"></i>Menu</a></li>
       <% else %>
       <li><%= link_to "Log In", login_path %> </li>
       <% end %>
