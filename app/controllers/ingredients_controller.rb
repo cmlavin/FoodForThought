@@ -44,7 +44,7 @@ class IngredientsController < ApplicationController
     else
       #throw error, missing name, quantity or units
     end
-    handle_dem_unchecked_boxes(params[:ingredient_ids]) if params[:ingredient_ids]
+    handle_the_unchecked_boxes(params[:ingredient_ids]) if params[:ingredient_ids]
     redirect_to new_recipe_path
   end
 

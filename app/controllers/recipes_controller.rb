@@ -66,7 +66,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @recipe.update(recipe_params)
     collection = @recipe.ingredient_ids
-    @recipe.ingredient_ids = handle_dem_checked_boxes(params[:recipe][:ingredient_ids], collection)
+    @recipe.ingredient_ids = handle_the_checked_boxes(params[:recipe][:ingredient_ids], collection)
     if (!params[:recipe][:ingredient][:name].empty? && !params[:recipe][:ingredient][:quantity].empty? && !params[:recipe][:ingredient][:unit].empty?)
       @ingredient = Ingredient.find_or_create_by(name: params[:recipe][:ingredient][:name])
       @recipe.ingredients << @ingredient
