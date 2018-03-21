@@ -1,19 +1,19 @@
-## Table of Contents
+# Food For Thought
 
-- [Introduction](#introduction)
-- [Technologies](#technologies)
-- [Installation](#installation)
+[Food For Thought Demo](http://foodforthought-flatiron.herokuapp.com/)
 
-## Introduction
+Food brings people together. Food For Thought is a full stack web application inspired by chef's cookbooks where they tell the stories behind their recipes. The entire application is written in Ruby on Rails using a PostgreSQL database to persist user information, recipes, ingredients, and stories. The responsive front-end is built using Materialize and ERB templates.
 
-Food For Thought is a web application where users can share recipes and the stories associated with them.  The app can be accessed at http://foodforthought-flatiron.herokuapp.com/.
+## Features
 
-## Technologies
+* Account creation and user authentication
+  * Passwords are encrypted using the bcrypt gem
+* Search for recipes by name or ingredient
+* Save your favorite recipes or stories
+* Create, read, update, or delete recipes and stories
+  * Only the author can modify their own entries
+* Upload images to AWS
+* User profile
+  * Users can view recipes and stories they wrote and those they have saved
 
-* Ruby on Rails
-* PostgreSQL
-* Materialize
-
-## Installation
-
-Clone the repo at https://github.com/cmlavin/FoodForThought.  Run ```bundle install``` and ```rails s``` to install all gems and start the server.
+![alt text](/app/assets/images/FoodApp.png "Food For Thought Homepage")
