@@ -2,7 +2,7 @@
 
 [Food For Thought Demo](http://foodforthought-flatiron.herokuapp.com/)
 
-Food brings people together. Food For Thought is a full stack web application inspired by chef's cookbooks where they tell the stories behind their recipes. The entire application is written in Ruby on Rails using a PostgreSQL database to persist user information, recipes, ingredients, and stories. The responsive front-end is built using Materialize and ERB templates.
+Food For Thought is a full stack web application inspired by chef's cookbooks where they share recipes and tell the stories behind them. The entire application is written in Ruby on Rails using a PostgreSQL database to persist user information, recipes, ingredients, and stories. The responsive front-end is built using Materialize and ERB templates.
 
 ## Features
 
@@ -16,4 +16,4 @@ Food brings people together. Food For Thought is a full stack web application in
 * User profile
   * Users can view recipes and stories they wrote and those they have saved
 
-![alt text](/app/assets/images/FoodApp.png "Food For Thought Homepage")
+![Food For Thought Homepage](/app/assets/images/FoodApp.png "Food For Thought Homepage")
